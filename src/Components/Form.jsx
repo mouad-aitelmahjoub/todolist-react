@@ -8,7 +8,6 @@ function Form({ input, setInput, todos, setTodos, selectedTodo, setSelectedTodo,
   const onFormSubmit = (event) => {
     event.preventDefault()
     if (selectedTodo.id) {
-      console.log("edited one")
       setTodos(
         todos.map((todo) => {
           if (todo.id === selectedTodo.id) {
@@ -20,8 +19,8 @@ function Form({ input, setInput, todos, setTodos, selectedTodo, setSelectedTodo,
           return todo
         })
       )
+      setSelectedTodo([])
     } else {
-      console.log("new one")
       setTodos([...todos, { id: uuidv4(), title: input, completed: false }])
     }
     setInput("")
